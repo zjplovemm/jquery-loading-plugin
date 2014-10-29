@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>jquery加载遮罩层Demo</title>
+    <script src="jquery-1.8.3.js"></script>
+    <script src="jquery-loading-plugin.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(document).on('click',"#show",function(e){
+                $.fn.showLoadingDiv();
+                //隐藏遮罩层的div可以在事件结束后执行，这里设置为显示后3秒消失。
+                setTimeout($.fn.hideLoadingDiv,3000);
+            });
+
+            $(document).on('click',"#areaShow",function(e){
+                $.fn.showLoadingDiv("areaMask");
+                //隐藏遮罩层的div可以在事件结束后执行，这里设置为显示后3秒消失。
+                setTimeout($.fn.hideLoadingDiv,3000);
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div>
+        <h1>这是加载遮罩层的演示页面</h1>
+        <h3>1.需要注意页面中不能有id为maskLayerDiv的div块</h3>
+        <h3>2.隐藏遮罩层的div可以在事件结束后执行，这里设置为显示后<span style="color: red;">3秒</span>消失。</h3>
+        <input type="button"  id="show" title="显示遮罩层"  value="显示遮罩层">
+        <input type="button"  id="areaShow" title="div内显示遮罩层"  value="div内显示遮罩层">
+        <div id="areaMask" style="width: 400px;height: 400px;background: black;"></div>
+    </div>
+</body>
+</html>
